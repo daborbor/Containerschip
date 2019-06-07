@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Containerschip", "Container
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algoritme", "Algoritme\Algoritme.csproj", "{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{33B842C1-1187-49F9-8DA3-09B2605BD0C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B842C1-1187-49F9-8DA3-09B2605BD0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B842C1-1187-49F9-8DA3-09B2605BD0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B842C1-1187-49F9-8DA3-09B2605BD0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B842C1-1187-49F9-8DA3-09B2605BD0C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,9 @@ namespace Algoritme.Interfaces.ObjectInterfaces
     public interface IStack
     {
         bool Electricity { get; }
+        int Weight { get; }
+        int TotalWeightOnLowestContainer { get; }
+        int Height { get; }
         List<IContainer> ContainerCollection { get; }
     }
 }

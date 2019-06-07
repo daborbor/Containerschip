@@ -7,13 +7,13 @@ using Algoritme.Interfaces.ObjectInterfaces;
 
 namespace Algoritme.Objects
 {
-    class Ship : IShip
+    public class Ship : IShip
     {
         public List<List<IStack>> StackMatrix { get; }
         public int Width { get; }
         public int Length { get; }
 
-        Ship(int width, int length)
+        public Ship(int width, int length)
         {
             Width = width;
             Length = length;
@@ -35,7 +35,5 @@ namespace Algoritme.Objects
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

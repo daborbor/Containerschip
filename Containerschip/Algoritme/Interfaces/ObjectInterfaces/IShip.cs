@@ -4,9 +4,8 @@ namespace Algoritme.Interfaces.ObjectInterfaces
 {
     public interface IShip
     {
-        List<List<IStack>> StackMatrix { get; }
-        int Width { get; }
-        int Length { get; }
+        int WidthX { get; }
+        int LengthY { get; }
 
         void AddContainer(int x, int y, IContainer container);
     }

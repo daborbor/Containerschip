@@ -1,31 +1,30 @@
 ﻿using Algoritme.Interfaces.ObjectInterfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Algoritme.Objects
 {
     public class Ship : IShip
     {
-        public List<List<IStack>> StackMatrix { get; }
-        public int Width { get; }
-        public int Length { get; }
+        private List<List<IStack>> StackMatrix { get; }
+        public int WidthX { get; }
+        public int LengthY { get; }
 
-        public Ship(int width, int length)
+        public Ship(int widthX, int lengthY)
         {
-            Width = width;
-            Length = length;
-            for (int i = 0; i < Width; i++)
+            StackMatrix = new List<List<IStack>>();
+            WidthX = widthX;
+            LengthY = lengthY;
+            for (int i = 0; i < WidthX; i++)
             {
-                if (i == 0)
-                {
-                    StackMatrix.Add(new List<IStack>(Length));
-                }
-                StackMatrix.Add(new List<IStack>(Length));
+                StackMatrix.Add(new List<IStack>(LengthY));
             }
 
             foreach (List<IStack> stackColletion in StackMatrix)
             {
-                for (int i = 0; i < Length; i++)
+                for (int i = 0; i < LengthY; i++)
                 {
                     if (i == 0)
                     {
@@ -42,7 +41,7 @@ namespace Algoritme.Objects
         public float _gewichtLinks()
         {
             float returnWeight = 0;
-            int leftHalf = (int)Math.Floor((decimal)Width / 2);
+            int leftHalf = (int)Math.Floor((decimal)WidthX / 2);
             for (int i = 0; i != leftHalf; i++)
             {
                 foreach (IStack stack in StackMatrix[i])
@@ -58,9 +57,9 @@ namespace Algoritme.Objects
         private float _gewichtMidden()
         {
             int returnWeight = 0;
-            if (Width % 2 != 0)
+            if (WidthX % 2 != 0)
             {
-                int middle = (int)Math.Round((decimal)Width / 2);
+                int middle = (int)Math.Round((decimal)WidthX / 2);
                 foreach (IStack stack in StackMatrix[middle])
                 {
                     returnWeight += stack.Weight;
@@ -72,7 +71,7 @@ namespace Algoritme.Objects
         public float _gewichtRechts()
         {
             float returnWeight = 0;
-            int rightHalf = (int)Math.Floor((decimal)Width / 2);
+            int rightHalf = (int)Math.Floor((decimal)WidthX / 2);
             for (int i = 0; i != rightHalf; i++)
             {
                 foreach (IStack stack in StackMatrix[i+rightHalf])
@@ -87,7 +86,12 @@ namespace Algoritme.Objects
 
         public void AddContainer(int width, int length, IContainer container)
         {
-            StackMatrix[width][length].AddContainer(container);
+            StackMatrix[width][length].AddContainer(container, StackMatrix[width]);
+        }
+
+        public List<List<IStack>> GetList()
+        {
+            return StackMatrix;
         }
     }
 }

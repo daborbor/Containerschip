@@ -9,11 +9,12 @@ namespace Algoritme.Interfaces.ObjectInterfaces
     public interface IStack
     {
         bool Electricity { get; }
+        bool HasValuable { get; }
         int Weight { get; }
         int TotalWeightOnLowestContainer { get; }
         int Height { get; }
         List<IContainer> ContainerCollection { get; }
 
-        void AddContainer(IContainer container);
+        bool AddContainer(IContainer container, List<IStack> stacksOnXAxis);
     }
 }

@@ -5,9 +5,10 @@ namespace Algoritme.Objects
 {
     public class Stack : IStack
     {
-        public readonly List<IContainer> ContainerCollection { get; }
+        public List<IContainer> ContainerCollection { get; } = new List<IContainer>();
 
         public bool Electricity { get; }
+        public bool HasValuable { get; private set; }
 
         public Stack(bool electricity)
         {
@@ -28,6 +29,8 @@ namespace Algoritme.Objects
             }
         }
 
+       
+
         public int TotalWeightOnLowestContainer
         {
             get
@@ -44,9 +47,26 @@ namespace Algoritme.Objects
             }
         }
 
-        public void AddContainer(IContainer container)
+        public bool AddContainer(IContainer container, List<IStack> stacksOnXAxis)
         {
-            ContainerCollection.Add(container);
+            if (HasValuable)
+                return false;
+
+            if (TotalWeightOnLowestContainer + container.Weight > 120)
+                return false;
+
+            bool containerCheck = container.Check(this, stacksOnXAxis);
+            if (containerCheck)
+            {
+                ContainerCollection.Add(container);
+                if (container.Valuable)
+                {
+                    HasValuable = true;
+                }
+                return true;
+            }
+
+            return false;
         }
 
         public int Height => ContainerCollection.Count;

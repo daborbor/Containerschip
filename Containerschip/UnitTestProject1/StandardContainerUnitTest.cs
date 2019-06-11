@@ -9,13 +9,13 @@ namespace UnitTestProject1
     namespace UnitTestProject1
     {
         [TestClass]
-        public class ContainerUnitTest
+        public class StandardContainerUnitTest
         {
             [TestMethod]
             public void KloptHetGewicht()
             {
                 int weight = 100;
-                IContainer container = new Container(100);
+                IContainer container = new StandardContainer(100);
                 Assert.AreEqual(100, container.Weight);
             }
 
@@ -23,7 +23,7 @@ namespace UnitTestProject1
             [ExpectedException(typeof(ArgumentOutOfRangeException))]
             public void MagGewichtKleinDan1Zijn()
             {
-                IContainer container = new Container(0);
+                IContainer container = new StandardContainer(0);
             }
         }
     }

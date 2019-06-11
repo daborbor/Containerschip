@@ -8,6 +8,6 @@ namespace Algoritme.Interfaces.ObjectInterfaces
         int Width { get; }
         int Length { get; }
 
-        void AddContainer(int x, int y);
+        void AddContainer(int x, int y, IContainer container);
     }
 }

@@ -41,14 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgoritmeVerloop.cs" />
     <Compile Include="Interfaces\ObjectInterfaces\IContainer.cs" />
     <Compile Include="Interfaces\ObjectInterfaces\IShip.cs" />
     <Compile Include="Interfaces\ObjectInterfaces\IStack.cs" />
-    <Compile Include="Objects\Container.cs" />
+    <Compile Include="Objects\StandardContainer.cs" />
     <Compile Include="Objects\Ship.cs" />
     <Compile Include="Objects\Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AlgoritmeLogica\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

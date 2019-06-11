@@ -13,5 +13,7 @@ namespace Algoritme.Interfaces.ObjectInterfaces
         int TotalWeightOnLowestContainer { get; }
         int Height { get; }
         List<IContainer> ContainerCollection { get; }
+
+        void AddContainer(IContainer container);
     }
 }

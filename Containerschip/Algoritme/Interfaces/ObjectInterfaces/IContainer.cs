@@ -4,5 +4,8 @@
     {
         int Weight { get; }
         bool Check(IStack stack);
+        bool Electricity { get; }
+        string ToString();
+
     }
 }

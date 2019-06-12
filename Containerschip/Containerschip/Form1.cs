@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Algoritme.Objects;
 using System.Windows.Forms;
 using Algoritme.Interfaces.ObjectInterfaces;
+using Algoritme.Objects.Ship;
 
 namespace Containerschip
 {

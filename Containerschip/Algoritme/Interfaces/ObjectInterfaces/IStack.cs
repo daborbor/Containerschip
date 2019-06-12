@@ -10,8 +10,10 @@ namespace Algoritme.Interfaces.ObjectInterfaces
     {
         bool Electricity { get; }
         bool HasValuable { get; }
+        bool Check(IContainer container, List<IStack> stacksOnXAxis);
         int Weight { get; }
         int TotalWeightOnLowestContainer { get; }
+        int MaxWeightOnLowestContainer { get;  }
         int Height { get; }
         List<IContainer> ContainerCollection { get; }
 

@@ -1,5 +1,6 @@
 ﻿using Algoritme.Interfaces.ObjectInterfaces;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 
 namespace Algoritme.Objects
 {
@@ -29,7 +30,6 @@ namespace Algoritme.Objects
             }
         }
 
-       
 
         public int TotalWeightOnLowestContainer
         {
@@ -47,16 +47,11 @@ namespace Algoritme.Objects
             }
         }
 
+        public int MaxWeightOnLowestContainer { get; } = 120000;
+
         public bool AddContainer(IContainer container, List<IStack> stacksOnXAxis)
         {
-            if (HasValuable)
-                return false;
-
-            if (TotalWeightOnLowestContainer + container.Weight > 120)
-                return false;
-
-            bool containerCheck = container.Check(this, stacksOnXAxis);
-            if (containerCheck)
+            if (Check(container, stacksOnXAxis))
             {
                 ContainerCollection.Add(container);
                 if (container.Valuable)
@@ -67,6 +62,17 @@ namespace Algoritme.Objects
             }
 
             return false;
+        }
+
+        public bool Check(IContainer container, List<IStack> stacksOnXAxis)
+        {
+            if (HasValuable)
+                return false;
+
+            if (TotalWeightOnLowestContainer + container.Weight > MaxWeightOnLowestContainer)
+                return false;
+
+            return container.Check(this, stacksOnXAxis);
         }
 
         public int Height => ContainerCollection.Count;

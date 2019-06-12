@@ -41,13 +41,9 @@ namespace Algoritme.Objects
 
             if (Electricity && stack.Electricity == false)//Elektriciteit check
                 return false;
-
-            if (Valuable && !stack.HasValuable) //er kan maar één waardevolle container per stack zijn
+            
+            if (Valuable && checkIfValuableCanBePlaced(stack, stacksOnXAxis, stackY, stackZ) == false) //als de container valuable is moet er gekeken worden of ie uberhaupt geplaatst kan worden zonder dat de ingangen/ingangen van andere containers geblokkeerd zijn
                 return false;
-
-            if (checkIfValuableCanBePlaced(stack, stacksOnXAxis, stackY, stackZ) == false)
-                return false;
-
 
 
             //als nergens een bezwaar is mag de container erop
@@ -77,6 +73,7 @@ namespace Algoritme.Objects
 
             return unblockedEntrances;
         }
+
         private bool checkIfValuableCanBePlaced(IStack stack, List<IStack> stacksOnXAxis, int stackY, int stackZ)
         {
             int unblockedEntrances = checkNumberOffFreeEntrances(stack, stacksOnXAxis, stackY, stackZ); //aantal vrije ingangen ophalen

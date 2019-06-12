@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Algoritme.Objects;
+using Algoritme.Objects.Ship;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1

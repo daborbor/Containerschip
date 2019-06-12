@@ -1,10 +1,8 @@
-﻿using Algoritme.Interfaces.ObjectInterfaces;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Algoritme.Interfaces.ObjectInterfaces;
 
-namespace Algoritme.Objects
+namespace Algoritme.Objects.Ship
 {
     public class Ship : IShip
     {
@@ -38,7 +36,7 @@ namespace Algoritme.Objects
             }
         }
 
-        public float _gewichtLinks()
+        public float GewichtLinks()
         {
             float returnWeight = 0;
             int leftHalf = (int)Math.Floor((decimal)WidthX / 2);
@@ -50,11 +48,11 @@ namespace Algoritme.Objects
                 }
             }
 
-            returnWeight += _gewichtMidden() / 2;
+            returnWeight += gewichtMidden() / 2;
             return returnWeight;
         }
 
-        private float _gewichtMidden()
+        private float gewichtMidden()
         {
             int returnWeight = 0;
             if (WidthX % 2 != 0)
@@ -68,7 +66,7 @@ namespace Algoritme.Objects
             return returnWeight;
         }
 
-        public float _gewichtRechts()
+        public float GewichtRechts()
         {
             float returnWeight = 0;
             int rightHalf = (int)Math.Floor((decimal)WidthX / 2);
@@ -89,9 +87,31 @@ namespace Algoritme.Objects
             StackMatrix[width][length].AddContainer(container, StackMatrix[width]);
         }
 
-        public List<List<IStack>> GetList()
+        public List<IStack> GetStack()
         {
-            return StackMatrix;
+            List<IStack> returnList = new List<IStack>();
+            foreach (List<IStack> stacks in StackMatrix)
+            {
+                foreach (IStack stack in stacks)
+                {
+                    returnList.Add(stack);
+                }
+            }
+
+            return returnList;
+        }
+
+        public List<IStack> GetStackOnXAxis(IStack stack)
+        {
+            for (int i = 0; i <= StackMatrix.Count; i++)
+            {
+                if (StackMatrix[i].IndexOf(stack) != null)
+                {
+                    return StackMatrix[i];
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algoritme.Interfaces.ObjectInterfaces
 {
-    public interface IStack
+    public interface IStack : IEnumerable<IContainer>
     {
         bool Electricity { get; }
         bool HasValuable { get; }

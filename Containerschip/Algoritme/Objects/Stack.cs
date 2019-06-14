@@ -1,4 +1,5 @@
-﻿using Algoritme.Interfaces.ObjectInterfaces;
+﻿using System.Collections;
+using Algoritme.Interfaces.ObjectInterfaces;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 
@@ -26,21 +27,26 @@ namespace Algoritme.Objects
                     returnWeight += container.Weight;
                 }
 
+                if (returnWeight == 0)
+                {
+                    returnWeight = -1;
+                }
+
                 return returnWeight;
             }
         }
-
 
         public int TotalWeightOnLowestContainer
         {
             get
             {
                 int returnWeight = 0;
-                List<IContainer> containerCollection = ContainerCollection;
-                containerCollection.RemoveAt(0);
-                foreach (IContainer container in containerCollection)
+                if (ContainerCollection.Count > 1)
                 {
-                    returnWeight += container.Weight;
+                    for (int i = 1; i < ContainerCollection.Count; i++)
+                    {
+                        returnWeight += ContainerCollection[i].Weight;
+                    }
                 }
 
                 return returnWeight;
@@ -76,5 +82,15 @@ namespace Algoritme.Objects
         }
 
         public int Height => ContainerCollection.Count;
+
+        IEnumerator<IContainer> IEnumerable<IContainer>.GetEnumerator()
+        {
+            return ContainerCollection.GetEnumerator();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return ContainerCollection.GetEnumerator();
+        }
     }
 }

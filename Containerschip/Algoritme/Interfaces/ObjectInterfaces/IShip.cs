@@ -12,5 +12,6 @@ namespace Algoritme.Interfaces.ObjectInterfaces
         void AddContainer(int x, int y, IContainer container);
         List<IStack> GetStack();
         List<IStack> GetStackOnXAxisByStack(IStack stack);
+        List<List<IStack>> GetList();
     }
 }

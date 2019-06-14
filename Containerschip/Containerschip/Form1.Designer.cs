@@ -39,6 +39,9 @@
             this.cbElektriciteit = new System.Windows.Forms.CheckBox();
             this.nudRandom = new System.Windows.Forms.NumericUpDown();
             this.btnRandom = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbBalans = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudContainerWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
@@ -82,14 +85,14 @@
             // nudX
             // 
             this.nudX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nudX.Location = new System.Drawing.Point(251, 423);
+            this.nudX.Location = new System.Drawing.Point(302, 423);
             this.nudX.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudX.Name = "nudX";
-            this.nudX.Size = new System.Drawing.Size(120, 20);
+            this.nudX.Size = new System.Drawing.Size(69, 20);
             this.nudX.TabIndex = 3;
             this.nudX.Value = new decimal(new int[] {
             1,
@@ -100,14 +103,14 @@
             // nudY
             // 
             this.nudY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nudY.Location = new System.Drawing.Point(377, 423);
+            this.nudY.Location = new System.Drawing.Point(423, 423);
             this.nudY.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.nudY.Name = "nudY";
-            this.nudY.Size = new System.Drawing.Size(120, 20);
+            this.nudY.Size = new System.Drawing.Size(78, 20);
             this.nudY.TabIndex = 4;
             this.nudY.Value = new decimal(new int[] {
             1,
@@ -118,7 +121,7 @@
             // butMakeShip
             // 
             this.butMakeShip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.butMakeShip.Location = new System.Drawing.Point(503, 420);
+            this.butMakeShip.Location = new System.Drawing.Point(507, 420);
             this.butMakeShip.Name = "butMakeShip";
             this.butMakeShip.Size = new System.Drawing.Size(81, 23);
             this.butMakeShip.TabIndex = 5;
@@ -138,12 +141,13 @@
             // 
             this.btnSorteer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSorteer.AutoSize = true;
-            this.btnSorteer.Location = new System.Drawing.Point(590, 420);
+            this.btnSorteer.Location = new System.Drawing.Point(594, 420);
             this.btnSorteer.Name = "btnSorteer";
             this.btnSorteer.Size = new System.Drawing.Size(81, 23);
             this.btnSorteer.TabIndex = 6;
             this.btnSorteer.Text = "Sorteer";
             this.btnSorteer.UseVisualStyleBackColor = true;
+            this.btnSorteer.Click += new System.EventHandler(this.btnSorteer_Click);
             // 
             // cbWaardevol
             // 
@@ -194,11 +198,41 @@
             this.btnRandom.UseVisualStyleBackColor = true;
             this.btnRandom.Click += new System.EventHandler(this.btnRandom_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(252, 423);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Breedte";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(377, 425);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Lengte";
+            // 
+            // lbBalans
+            // 
+            this.lbBalans.AutoSize = true;
+            this.lbBalans.Location = new System.Drawing.Point(12, 334);
+            this.lbBalans.Name = "lbBalans";
+            this.lbBalans.Size = new System.Drawing.Size(45, 13);
+            this.lbBalans.TabIndex = 13;
+            this.lbBalans.Text = "Balans: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 452);
+            this.Controls.Add(this.lbBalans);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRandom);
             this.Controls.Add(this.nudRandom);
             this.Controls.Add(this.cbElektriciteit);
@@ -233,6 +267,9 @@
         private System.Windows.Forms.CheckBox cbElektriciteit;
         private System.Windows.Forms.NumericUpDown nudRandom;
         private System.Windows.Forms.Button btnRandom;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbBalans;
     }
 }
 

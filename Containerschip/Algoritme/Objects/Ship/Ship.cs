@@ -78,7 +78,7 @@ namespace Algoritme.Objects.Ship
                 }
             }
 
-            returnWeight += _gewichtMidden() / 2;
+            returnWeight += gewichtMidden() / 2;
             return returnWeight;
         }
 
@@ -101,17 +101,22 @@ namespace Algoritme.Objects.Ship
             return returnList;
         }
 
-        public List<IStack> GetStackOnXAxis(IStack stack)
+        public List<IStack> GetStackOnXAxisByStack(IStack stack)
         {
             for (int i = 0; i <= StackMatrix.Count; i++)
             {
-                if (StackMatrix[i].IndexOf(stack) != null)
+                if (StackMatrix[i].IndexOf(stack) != -1)
                 {
                     return StackMatrix[i];
                 }
             }
 
             return null;
+        }
+
+        public List<List<IStack>> GetList()
+        {
+            return StackMatrix;
         }
     }
 }

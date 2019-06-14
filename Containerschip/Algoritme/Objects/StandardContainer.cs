@@ -37,14 +37,13 @@ namespace Algoritme.Objects
         public bool Check(IStack stack, List<IStack> stacksOnXAxis)
         {
             int stackY = stacksOnXAxis.IndexOf(stack);
-            int stackZ = stack.ContainerCollection.Count;
+            int stackZ = stack.ContainerCollection.Count - 1;
 
-            if (Electricity && stack.Electricity == false)//Elektriciteit check
-                return false;
-            
-            if (Valuable && checkIfValuableCanBePlaced(stack, stacksOnXAxis, stackY, stackZ) == false) //als de container valuable is moet er gekeken worden of ie uberhaupt geplaatst kan worden zonder dat de ingangen/ingangen van andere containers geblokkeerd zijn
+            if (Electricity && !stack.Electricity)//Elektriciteit check
                 return false;
 
+            if (Valuable && !checkIfValuableCanBePlaced(stack, stacksOnXAxis, stackY)) //als de container valuable is moet er gekeken worden of ie uberhaupt geplaatst kan worden zonder dat de ingangen/ingangen van andere containers geblokkeerd zijn
+                return false;
 
             //als nergens een bezwaar is mag de container erop
             return true;
@@ -59,44 +58,62 @@ namespace Algoritme.Objects
             if (Electricity)
                 props += "elektrisch, ";
 
-            return $"Gewicht {Weight} {props}";
+            return $"{Weight}, {props}";
         }
 
-        private int checkNumberOffFreeEntrances(IStack stack, List<IStack> stacksOnXAxis, int stackY, int stackZ)
+        private int checkNumberOfFreeEntrances(IStack stack, List<IStack> stacksOnXAxis, int stackY)
         {
-            int unblockedEntrances = 0;
-            if (stacksOnXAxis[stackY - 1].ContainerCollection[stackZ] == null) //check of achter vrij is
-                unblockedEntrances++;
+            int unblockedEntrances = 2;
 
-            if (stacksOnXAxis[stackY + 1].ContainerCollection[stackZ] == null) //check of voor vrij is
-                unblockedEntrances++;
+            if (stackY > 0) //checken of het niet de eerste rij is
+            {
+                if (stacksOnXAxis[stackY - 1].Height > stack.Height)
+                    unblockedEntrances--;
+            }
+            if (stackY != stacksOnXAxis.Count - 1)//checken of het niet de laatste rij is
+            {
+                if (stacksOnXAxis[stackY + 1].Height > stack.Height)
+                    unblockedEntrances--;
+            }
 
             return unblockedEntrances;
         }
 
-        private bool checkIfValuableCanBePlaced(IStack stack, List<IStack> stacksOnXAxis, int stackY, int stackZ)
+        private bool checkIfValuableCanBePlaced(IStack stack, List<IStack> stacksOnXAxis, int stackY)
         {
-            int unblockedEntrances = checkNumberOffFreeEntrances(stack, stacksOnXAxis, stackY, stackZ); //aantal vrije ingangen ophalen
+            int containerZAxis = stack.Height + 1;
+            int unblockedEntrances = checkNumberOfFreeEntrances(stack, stacksOnXAxis, stackY); //aantal vrije ingangen ophalen
             if (unblockedEntrances == 0)
             {
                 return false;
             }
-
-            if (unblockedEntrances == 1)
+            else if (unblockedEntrances == 1)
             {
-                if (stacksOnXAxis[stackY - 1].ContainerCollection[stackZ].Valuable)
+                if (stackY > 0) //checken of dit niet de eerste rij is en of de rij ervoor wel zo'n hoge containers heeft
                 {
-                    //checken of de enige ingang van een waardevolle container achter niet geblokkeerd word
-                    if (checkNumberOffFreeEntrances(stack, stacksOnXAxis, stackY - 1, stackZ) != 2)
-                        return false;
-                }
-                else if (stacksOnXAxis[stackY + 1].ContainerCollection[stackZ].Valuable)
-                {
-                    //checken of de enige ingang van een waardevolle container achter niet geblokkeerd word
-                    if (checkNumberOffFreeEntrances(stack, stacksOnXAxis, stackY + 1, stackZ) != 2)
-                        return false;
+                    IStack stackOnXAxisBehind = stacksOnXAxis[stackY - 1];
+                    if (stackOnXAxisBehind.Height > stack.Height && containerZAxis <= stackOnXAxisBehind.Height)
+                    {
+                        if (stackOnXAxisBehind.ContainerCollection[containerZAxis - 1].Valuable)//checken of de enige ingang van een waardevolle container achter niet geblokkeerd word
+                        {
+                            if (checkNumberOfFreeEntrances(stack, stacksOnXAxis, stackY - 1) != 2)
+                                return false;
+                        }
+                    }
                 }
 
+                if (stackY < stacksOnXAxis.Count - 1) //checken of het niet de laatste rij is en of de rij erna wel zo'n hoge containers heeft
+                {
+                    IStack stackOnXAxisInFront = stacksOnXAxis[stackY + 1];
+                    if (stackOnXAxisInFront.Height >= stack.Height && containerZAxis <= stackOnXAxisInFront.Height)
+                    {
+                        if (stackOnXAxisInFront.ContainerCollection[containerZAxis - 1].Valuable) //checken of de enige ingang van een waardevolle container achter niet geblokkeerd word
+                        {
+                            if (checkNumberOfFreeEntrances(stack, stacksOnXAxis, stackY + 1) != 2)
+                                return false;
+                        }
+                    }
+                }
             }
             return true;
         }

@@ -1,10 +1,10 @@
 ﻿using Algoritme;
-using Algoritme.Interfaces.ObjectInterfaces;
-using Algoritme.Objects;
-using Algoritme.Objects.Ship;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Objects.Interfaces.ObjectInterfaces;
+using Objects.Objects.Container;
+using Objects.Objects.Ship;
 
 namespace Containerschip
 {
@@ -25,7 +25,7 @@ namespace Containerschip
             int weight = Convert.ToInt32(nudContainerWeight.Value);
             try
             {
-                lbContainer.Items.Add(new StandardContainer(weight, false, cbWaardevol.Checked));
+                lbContainer.Items.Add(new Container(weight, cbElektriciteit.Checked, cbWaardevol.Checked));
             }
             catch (Exception exception)
             {
@@ -78,7 +78,7 @@ namespace Containerschip
                 int weight = r.Next(4000, 30000);
                 bool electricity = 0.1 > r.NextDouble();
                 bool valuable = 0.1 > r.NextDouble();
-                lbContainer.Items.Add(new StandardContainer(weight, electricity, valuable));
+                lbContainer.Items.Add(new Container(weight, electricity, valuable));
             }
         }
 

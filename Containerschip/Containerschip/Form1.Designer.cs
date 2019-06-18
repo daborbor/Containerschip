@@ -151,6 +151,7 @@
             // 
             // cbWaardevol
             // 
+            this.cbWaardevol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbWaardevol.AutoSize = true;
             this.cbWaardevol.Location = new System.Drawing.Point(12, 400);
             this.cbWaardevol.Name = "cbWaardevol";
@@ -161,6 +162,7 @@
             // 
             // cbElektriciteit
             // 
+            this.cbElektriciteit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbElektriciteit.AutoSize = true;
             this.cbElektriciteit.Location = new System.Drawing.Point(12, 377);
             this.cbElektriciteit.Name = "cbElektriciteit";
@@ -171,7 +173,6 @@
             // 
             // nudRandom
             // 
-            this.nudRandom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudRandom.Location = new System.Drawing.Point(12, 282);
             this.nudRandom.Minimum = new decimal(new int[] {
             1,
@@ -189,7 +190,6 @@
             // 
             // btnRandom
             // 
-            this.btnRandom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRandom.Location = new System.Drawing.Point(12, 308);
             this.btnRandom.Name = "btnRandom";
             this.btnRandom.Size = new System.Drawing.Size(134, 23);
@@ -200,6 +200,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(252, 423);
             this.label1.Name = "label1";
@@ -209,6 +210,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(377, 425);
             this.label2.Name = "label2";

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}</ProjectGuid>
+    <ProjectGuid>{3928D54F-124E-46CB-89FF-559E07EA1F7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Algoritme</RootNamespace>
-    <AssemblyName>Algoritme</AssemblyName>
+    <RootNamespace>Objects</RootNamespace>
+    <AssemblyName>Objects</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,21 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlgoritmeVerloop.cs" />
+    <Compile Include="Interfaces\ObjectInterfaces\IContainer.cs" />
+    <Compile Include="Interfaces\ObjectInterfaces\IShip.cs" />
+    <Compile Include="Interfaces\ObjectInterfaces\IStack.cs" />
+    <Compile Include="Objects\Container\Container.cs" />
+    <Compile Include="Objects\Container\ContainerLogica\CheckEntrances.cs" />
+    <Compile Include="Objects\Container\ContainerLogica\ValuableCheck.cs" />
+    <Compile Include="Objects\Ship\Ship.cs" />
+    <Compile Include="Objects\Ship\ShipLogica\GetStackLogic.cs" />
+    <Compile Include="Objects\Ship\ShipLogica\WeightDistributionLogic.cs" />
+    <Compile Include="Objects\Stack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AlgoritmeLogica\" />
-    <Folder Include="Algoritme\" />
-    <Folder Include="Interfaces\ObjectInterfaces\" />
-    <Folder Include="Objects\Container\ContainerLogica\" />
-    <Folder Include="Objects\Ship\ShipLogica\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Objects\Objects.csproj">
-      <Project>{3928d54f-124e-46cb-89ff-559e07ea1f7f}</Project>
-      <Name>Objects</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

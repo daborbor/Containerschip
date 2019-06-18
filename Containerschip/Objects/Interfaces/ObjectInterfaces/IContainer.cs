@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Algoritme.Interfaces.ObjectInterfaces
+namespace Objects.Interfaces.ObjectInterfaces
 {
     public interface IContainer
     {

@@ -1,7 +1,7 @@
-﻿using Algoritme.Interfaces.ObjectInterfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Objects.Interfaces.ObjectInterfaces;
 
 namespace Algoritme
 {

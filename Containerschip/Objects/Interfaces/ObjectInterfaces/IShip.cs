@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Algoritme.Objects;
 
-namespace Algoritme.Interfaces.ObjectInterfaces
+namespace Objects.Interfaces.ObjectInterfaces
 {
     public interface IShip
     {

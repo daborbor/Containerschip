@@ -1,9 +1,8 @@
 ﻿using System.Collections;
-using Algoritme.Interfaces.ObjectInterfaces;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
+using Objects.Interfaces.ObjectInterfaces;
 
-namespace Algoritme.Objects
+namespace Objects.Objects
 {
     public class Stack : IStack
     {
@@ -26,12 +25,6 @@ namespace Algoritme.Objects
                 {
                     returnWeight += container.Weight;
                 }
-
-                if (returnWeight == 0)
-                {
-                    returnWeight = -1;
-                }
-
                 return returnWeight;
             }
         }

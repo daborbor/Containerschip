@@ -8,8 +8,8 @@ namespace Algoritme.Algoritme
 {
     public class AlgoritmeVerloop
     {
-        private int minX;
-        private int maxX;
+        private int _minX;
+        private int _maxX;
 
         public List<IContainer> PlaatsContainers(IShip ship, List<IContainer> containerCollection)
         {
@@ -17,33 +17,33 @@ namespace Algoritme.Algoritme
             if (containerCollection == null) throw new ArgumentNullException(nameof(containerCollection));
 
             containerCollection = containerCollection.OrderBy(o => o.Valuable).ThenByDescending(o => o.Electricity).ToList();
-            bool containerGeplaatsts = true;
-            minX = 0;
-            maxX = ship.WidthX;
-            while (containerGeplaatsts && containerCollection.Count != 0)
+            bool containerGeplaatst = true;
+            _minX = 0;
+            _maxX = ship.WidthX;
+            while (containerGeplaatst && containerCollection.Count != 0)
             {
                 foreach (IContainer container in containerCollection)
                 {
-                    containerGeplaatsts = false;
-                    List<IStack> stackList = ship.GetStack().OrderBy(o => o.Height).ToList();
+                    List<IStack> stackList = ship.GetStack().OrderBy(o => o.Height).ToList(); //de stacks van laag naar hoog sorteren, zo plaatsen we altijd containers op de laagste plek
+                    containerGeplaatst = false;
                     foreach (IStack stack in stackList)
                     {
                         if (stack.AddContainer(container, ship.GetStackOnXAxisByStack(stack)))
                         {
                             containerCollection.Remove(container);
-                            containerGeplaatsts = true;
+                            containerGeplaatst = true;
                             break;
                         }
                     }
 
-                    if (containerGeplaatsts)
+                    if (containerGeplaatst)
                         break;
                 }
 
-                Tuple<int, int, bool> tuple = DetermineXRangePlacment.XRange(ship, containerGeplaatsts, minX, maxX);
-                minX = tuple.Item1;
-                maxX = tuple.Item2;
-                containerGeplaatsts = tuple.Item3;
+                Tuple<int, int, bool> tuple = DetermineXRangePlacment.XRange(ship, containerGeplaatst, _minX, _maxX);
+                _minX = tuple.Item1;
+                _maxX = tuple.Item2;
+                containerGeplaatst = tuple.Item3;
             }
 
             return containerCollection;

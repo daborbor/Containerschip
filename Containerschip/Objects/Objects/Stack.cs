@@ -50,7 +50,6 @@ namespace Objects.Objects
             MaxWeightOnLowestContainer = maxWeightOnLowestContainer;
         }
 
-
         public bool AddContainer(IContainer container, List<IStack> stacksOnXAxis)
         {
             if (Check(container, stacksOnXAxis))

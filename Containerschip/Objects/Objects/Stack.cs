@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using Objects.Interfaces.ObjectInterfaces;
+using System.Collections;
 using System.Collections.Generic;
-using Objects.Interfaces.ObjectInterfaces;
 
 namespace Objects.Objects
 {
@@ -10,11 +10,8 @@ namespace Objects.Objects
 
         public bool Electricity { get; }
         public bool HasValuable { get; private set; }
-
-        public Stack(bool electricity)
-        {
-            Electricity = electricity;
-        }
+        public int MaxWeight { get; }
+        public int MaxWeightOnLowestContainer { get; }
 
         public int Weight
         {
@@ -46,7 +43,13 @@ namespace Objects.Objects
             }
         }
 
-        public int MaxWeightOnLowestContainer { get; } = 120000;
+        public Stack(int maxWeight, int maxWeightOnLowestContainer, bool electricity)
+        {
+            Electricity = electricity;
+            MaxWeight = maxWeight;
+            MaxWeightOnLowestContainer = maxWeightOnLowestContainer;
+        }
+
 
         public bool AddContainer(IContainer container, List<IStack> stacksOnXAxis)
         {
@@ -69,6 +72,9 @@ namespace Objects.Objects
                 return false;
 
             if (TotalWeightOnLowestContainer + container.Weight > MaxWeightOnLowestContainer)
+                return false;
+
+            if (Weight + container.Weight > MaxWeight)
                 return false;
 
             return container.Check(this, stacksOnXAxis);

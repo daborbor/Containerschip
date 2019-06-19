@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Objects.Interfaces.ObjectInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Objects.Interfaces.ObjectInterfaces;
+using Algoritme.AlgoritmeLogica;
 
-namespace Algoritme
+namespace Algoritme.Algoritme
 {
     public class AlgoritmeVerloop
     {
@@ -15,8 +16,7 @@ namespace Algoritme
             if (ship == null) throw new ArgumentNullException(nameof(ship));
             if (containerCollection == null) throw new ArgumentNullException(nameof(containerCollection));
 
-            //containerCollection = containerCollection.OrderByDescending(o => o.Weight).ThenByDescending(o => o.Valuable).ToList();
-            containerCollection = containerCollection.OrderBy(o => o.Valuable).ThenByDescending(o=>o.Electricity).ToList();
+            containerCollection = containerCollection.OrderBy(o => o.Valuable).ThenByDescending(o => o.Electricity).ToList();
             bool containerGeplaatsts = true;
             minX = 0;
             maxX = ship.WidthX;
@@ -40,22 +40,10 @@ namespace Algoritme
                         break;
                 }
 
-                if ((!containerGeplaatsts && minX != 0) || maxX != ship.WidthX)
-                {
-                    minX = 0;
-                    maxX = ship.WidthX;
-                    containerGeplaatsts = true;
-                }
-                else if (ship.GewichtLinks() <= ship.GewichtRechts())
-                {
-                    minX = 0;
-                    maxX = (int)Math.Floor((decimal)(ship.WidthX / 2));
-                }
-                else
-                {
-                    minX = (int)Math.Floor((decimal)(ship.WidthX / 2));
-                    maxX = ship.WidthX;
-                }
+                Tuple<int, int, bool> tuple = DetermineXRangePlacment.XRange(ship, containerGeplaatsts, minX, maxX);
+                minX = tuple.Item1;
+                maxX = tuple.Item2;
+                containerGeplaatsts = tuple.Item3;
             }
 
             return containerCollection;

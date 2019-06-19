@@ -1,7 +1,7 @@
-﻿using Algoritme;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Algoritme.Algoritme;
 using Objects.Interfaces.ObjectInterfaces;
 using Objects.Objects.Container;
 using Objects.Objects.Ship;
@@ -45,7 +45,8 @@ namespace Containerschip
                 Controls.Remove(label);
             }
             listboxList.Clear();
-            ship = new Ship((int)nudX.Value, (int)nudY.Value);
+            List<int> powerStackRows = new List<int> {0};
+            ship = new Ship((int)nudX.Value, (int)nudY.Value, 2000000, 120000, powerStackRows);
             List<List<IStack>> shipList = ship.GetList();
             foreach (List<IStack> stackList in shipList)
             {

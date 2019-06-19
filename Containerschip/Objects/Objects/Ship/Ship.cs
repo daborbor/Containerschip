@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Objects.Interfaces.ObjectInterfaces;
+﻿using Objects.Interfaces.ObjectInterfaces;
 using Objects.Objects.Ship.ShipLogica;
+using System.Collections.Generic;
 
 namespace Objects.Objects.Ship
 {
@@ -15,7 +15,40 @@ namespace Objects.Objects.Ship
         public List<IStack> GetStackOnXAxisByStack(IStack stack) => GetStackLogic.GetStackOnXAxisByStack(StackMatrix, stack);
         public List<List<IStack>> GetList() => StackMatrix;
 
-        public Ship(int widthX, int lengthY)
+        public int Weight
+        {
+            get
+            {
+                int returnWeight = 0;
+                foreach (List<IStack> list in StackMatrix)
+                {
+                    foreach (IStack stack in list)
+                    {
+                        returnWeight += stack.Weight;
+                    }
+                }
+                return returnWeight;
+            }
+        }
+
+        public int MaxWeight
+        {
+            get
+            {
+                int maxWeight = 0;
+                foreach (List<IStack> list in StackMatrix)
+                {
+                    foreach (IStack stack in list)
+                    {
+                        maxWeight += stack.MaxWeight;
+                    }
+                }
+
+                return maxWeight;
+            }
+        }
+
+        public Ship(int widthX, int lengthY, int maxWeightOnStack, int maxWeightOnLowestContainer, List<int> electricityList)
         {
             StackMatrix = new List<List<IStack>>();
             WidthX = widthX;
@@ -29,17 +62,18 @@ namespace Objects.Objects.Ship
             {
                 for (int i = 0; i < LengthY; i++)
                 {
-                    if (i == 0)
+                    if (electricityList.Contains(i))
                     {
-                        stackCollection.Add(new Stack(true));
+                        stackCollection.Add(new Stack(maxWeightOnStack, maxWeightOnLowestContainer,true));
                     }
                     else
                     {
-                        stackCollection.Add(new Stack(false));
+                        stackCollection.Add(new Stack(maxWeightOnStack, maxWeightOnLowestContainer, false));
                     }
                 }
             }
         }
+
         public void AddContainer(int x, int y, IContainer container)
         {
             StackMatrix[x][y].AddContainer(container, StackMatrix[x]);

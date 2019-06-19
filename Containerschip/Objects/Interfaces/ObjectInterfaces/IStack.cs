@@ -8,6 +8,7 @@ namespace Objects.Interfaces.ObjectInterfaces
         bool HasValuable { get; }
         bool Check(IContainer container, List<IStack> stacksOnXAxis);
         int Weight { get; }
+        int MaxWeight { get; }
         int TotalWeightOnLowestContainer { get; }
         int MaxWeightOnLowestContainer { get;  }
         int Height { get; }

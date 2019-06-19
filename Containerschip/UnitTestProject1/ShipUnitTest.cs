@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Objects.Objects.Container;
 using Objects.Objects.Ship;
 
@@ -10,7 +11,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void KanErEenSchipGemaaktWorden()
         {
-            Ship ship = new Ship(4, 5);
+            List<int> powerStackRows = new List<int> {0};
+            Ship ship = new Ship(4, 5, 2000000, 120000, powerStackRows);
 
             int x = ship.GetList().Count;
             int y = ship.GetList()[0].Count;
@@ -24,7 +26,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void KloptHetGewicht()
         {
-            Ship ship = new Ship(4, 5);
+            List<int> powerStackRows = new List<int> {0};
+            Ship ship = new Ship(4, 5, 2000000, 120000, powerStackRows);
 
             ship.AddContainer(0,1, new Container(5500, false, false));
             ship.AddContainer(3,1, new Container(4500, false, false));

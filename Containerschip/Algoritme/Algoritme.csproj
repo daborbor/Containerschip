@@ -41,16 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlgoritmeVerloop.cs" />
+    <Compile Include="AlgoritmeLogica\DetermineXRangePlacment.cs" />
+    <Compile Include="Algoritme\AlgoritmeVerloop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AlgoritmeLogica\" />
-    <Folder Include="Algoritme\" />
-    <Folder Include="Interfaces\ObjectInterfaces\" />
-    <Folder Include="Objects\Container\ContainerLogica\" />
-    <Folder Include="Objects\Ship\ShipLogica\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Objects\Objects.csproj">
       <Project>{3928d54f-124e-46cb-89ff-559e07ea1f7f}</Project>

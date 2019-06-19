@@ -26,7 +26,6 @@ namespace Objects.Objects.Container
         public bool Check(IStack stack, List<IStack> stacksOnXAxis)
         {
             int stackY = stacksOnXAxis.IndexOf(stack);
-
             if (Electricity && !stack.Electricity)//Elektriciteit check
                 return false;
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Containerschip", "Containerschip\Containerschip.csproj", "{D133075C-561B-471C-ABE0-24F8D38BF7A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerschipForm", "Containerschip\ContainerschipForm.csproj", "{D133075C-561B-471C-ABE0-24F8D38BF7A8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algoritme", "Algoritme\Algoritme.csproj", "{7BFB31CB-2D7A-4033-AE0F-1D3E03377D7A}"
 EndProject

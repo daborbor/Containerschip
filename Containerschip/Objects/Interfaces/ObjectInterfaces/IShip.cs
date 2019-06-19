@@ -6,6 +6,8 @@ namespace Objects.Interfaces.ObjectInterfaces
     {
         int WidthX { get; }
         int LengthY { get; }
+        int Weight { get; }
+        int MaxWeight { get; }
         float GewichtLinks();
         float GewichtRechts();
         void AddContainer(int x, int y, IContainer container);

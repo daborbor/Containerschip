@@ -44,6 +44,7 @@ namespace Containerschip
             {
                 Controls.Remove(label);
             }
+            stackInfoLabelList.Clear();
             listboxList.Clear();
             List<int> powerStackRows = new List<int> {0};
             ship = new Ship((int)nudX.Value, (int)nudY.Value, 2000000, 120000, powerStackRows);
@@ -94,6 +95,9 @@ namespace Containerschip
             {
                 Controls.Remove(label);
             }
+            stackInfoLabelList.Clear();
+            listboxList.Clear();
+
             listboxList.Clear();
             AlgoritmeVerloop algoritmeVerloop = new AlgoritmeVerloop();
             List<IContainer> containerList = new List<IContainer>();

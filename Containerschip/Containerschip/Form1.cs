@@ -97,8 +97,6 @@ namespace Containerschip
             }
             stackInfoLabelList.Clear();
             listboxList.Clear();
-
-            listboxList.Clear();
             AlgoritmeVerloop algoritmeVerloop = new AlgoritmeVerloop();
             List<IContainer> containerList = new List<IContainer>();
             foreach (IContainer containerItem in lbContainer.Items)
